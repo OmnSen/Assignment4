@@ -1,0 +1,13 @@
+def find_subarray_with_sum(arr, target):
+    curr_sum = 0
+    start = 0
+    for end in range(len(arr)):
+        curr_sum += arr[end]
+        while curr_sum > target:
+            curr_sum -= arr[start]
+            start += 1
+        if curr_sum == target:
+            return (start, end)
+    return -1
+# Example
+print(find_subarray_with_sum([1, 2, 3, 5, 7], 12))  # Output: (1, 3) → [2,3,7]

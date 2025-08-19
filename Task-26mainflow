@@ -1,0 +1,14 @@
+def is_balanced_parentheses(s):
+    stack = []
+    mapping = {')': '(', '}': '{', ']': '['}
+    for char in s:
+        if char in mapping.values():
+            stack.append(char)
+        elif char in mapping:
+            if not stack or stack[-1] != mapping[char]:
+                return False
+            stack.pop()
+    return not stack
+# Example
+print(is_balanced_parentheses("{[()]}"))  # True
+print(is_balanced_parentheses("{[(])}"))  # False
